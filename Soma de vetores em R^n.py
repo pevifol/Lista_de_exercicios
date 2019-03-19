@@ -1,10 +1,11 @@
 '''
-Este programa define uma função com objetivo de somar 2 vetores de em R^N.
-por favor, aprova isso mestre eu passei literalmente 6 horas tentando debugar um erro e até agora eu não sei pq diabos isso estava bugando ´<_`
+Este programa define uma funÃ§Ã£o com objetivo de somar 2 vetores de em R^N.
+por favor, aprova isso mestre eu passei literalmente 6 horas tentando debugar um erro e atÃ© agora eu nÃ£o sei pq diabos isso estava bugando Â´<_`
 Ele foi feito por Ruan felipe da silva e sousa.
 DRE do aluno:119041454.
 Vet utiliza um parametro (numero inteiro) para numerar o vetor.
-sumvet não tem parametros, questiona o usuario quanto aos vetores que ele deseja somar e retorna o vetor resultado.
+sumvet nÃ£o tem parametros, questiona o usuario quanto aos vetores que ele deseja somar e retorna o vetor resultado.
+Originalmente, este programa foi feito em python 3.7, mas tive que refazer pra python 2.7 . Ele deve ser funcional em ambos.
 '''
 def vet(a):
     d=[]
@@ -14,13 +15,13 @@ def vet(a):
     while z < 10:       
         i+=1
         if i==1:
-            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'° dimensão. Caso o vetor '+str(a)+' não se expanda mais em nenhuma dimensões além destas, digite a letra k como resposta para interromper o loop: ')
+            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'Â° dimensÃ£o. Caso o vetor '+str(a)+' nÃ£o se expanda mais em nenhuma dimensÃµes alÃ©m destas, digite a letra k como resposta para interromper o loop: ')
             if type(x)== str and type(k)== str:
                 break
             else:
                 d.append(float(x))
         if i!=1:
-            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'° dimensão: ')            
+            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'Â° dimensÃ£o: ')            
             if type(x)== str and type(k)== str:
                 break
             else:
