@@ -1,27 +1,30 @@
 '''
-Ruan felipe da silva e sousa, aluno de matemÃ¡tica aplicada.
-19/03/2019
-DRE: 119041454.
-A primeira funÃ§Ã£o, vet(a), pergunta os valores dos vetores e retorna uma lista,
-contendo seus valores. a segunda, pergunta os valores de 2 vetores
-que deseja se somar, e soma as coordenadas e retorna o vetor resultado.
+Este programa define uma função com objetivo de somar 2 vetores de em R^N.
+por favor, aprova isso mestre eu passei literalmente 6 horas tentando debugar um erro e até agora eu não sei pq diabos isso estava bugando ´<_`
+Ele foi feito por Ruan felipe da silva e sousa.
+DRE do aluno:119041454.
+Vet utiliza um parametro (numero inteiro) para numerar o vetor.
+sumvet não tem parametros, questiona o usuario quanto aos vetores que ele deseja somar e retorna o vetor resultado.
 '''
-
 def vet(a):
     d=[]
     z=0
     i=0
+    k='VAISEFUDERPROGRAMABURRO'    
     while z < 10:       
         i+=1
         if i==1:
-            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'Â° dimensÃ£o. Caso o vetor '+str(a)+' nÃ£o se expanda mais em nenhuma dimensÃµes alÃ©m destas, digite k como resposta para interromper o loop: ')
-            d.append(float(x))        
+            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'° dimensão. Caso o vetor '+str(a)+' não se expanda mais em nenhuma dimensões além destas, digite a letra k como resposta para interromper o loop: ')
+            if type(x)== str and type(k)== str:
+                break
+            else:
+                d.append(float(x))
         if i!=1:
-            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'Â° dimensÃ£o.')
-            d.append(float(x)
-        if x=='k':
-                     break
-                      
+            x=input('Digite a valor da coordenada do vetor '+str(a)+' na '+str(i)+'° dimensão: ')            
+            if type(x)== str and type(k)== str:
+                break
+            else:
+                d.append(float(x))
     return d    
 def sumvet():
     a=vet(1)
