@@ -1,5 +1,6 @@
 '''
-Utilizando a livraria random, esse programa define a função "acharposto", que localiza num mapa de 180x180km, os postos que estão dentro do alcance do usuario.
+Utilizando a livraria random, esse programa define a função "acharposto", que localiza num mapa de 180x180km, os postos que estão dentro
+do alcance do usuario. Os postos são gerados aleatóriamente.
 Ele foi feito por Ruan felipe da silva e sousa, cujo DRE é: 119041454.
 '''
 import random
