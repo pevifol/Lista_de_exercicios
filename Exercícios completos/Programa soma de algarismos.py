@@ -17,3 +17,5 @@ def sumalg(x):
 def calcalg(x,y):
     q=x**y    
     return sumalg(q)
+print('Como desejamos saber a soma dos dígitos de um 2^1001, vamos ordenar que o computador faça calcalg(2,1001):')
+calcalg(2,1001)
