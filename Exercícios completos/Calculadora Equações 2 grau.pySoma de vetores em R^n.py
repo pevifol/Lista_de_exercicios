@@ -1,6 +1,5 @@
 '''
 Este programa define uma função com objetivo de somar 2 vetores de em R^N.
-por favor, aprova isso mestre eu passei literalmente 6 horas tentando debugar um erro e até agora eu não sei pq diabos isso estava bugando ´<_`
 Ele foi feito por Ruan felipe da silva e sousa.
 DRE do aluno:119041454.
 Vet utiliza um parametro (numero inteiro) para numerar o vetor.
@@ -11,7 +10,7 @@ def vet(a):
     d=[]
     z=0
     i=0
-    k='VAISEFUDERPROGRAMABURRO'    
+    k=''    
     while z < 10:       
         i+=1
         if i==1:
