@@ -27,17 +27,15 @@ def acharposto():
         if a in range(181):
             break        
     for z in range(0,12):       
-        ab=coordenadas_de_x[z]-q
-        print(ab)
-        ac=coordenadas_de_y[z]-a
-        print(ac)
-        ab=ab**2        
-        ac=ac**2
-        print(ab)
-        print(ac)
-        ad=ab+ac
-        ad=ad**(0.5)
-        print(ad)
+        ab=coordenadas_de_x[z]-q        
+        ac=coordenadas_de_y[z]-a       
+        abe=ab**2        
+        ace=ac**2
+        print(abe)
+        print(ace)
+        ad=abe+ace
+        ade=ad**(0.5)
+        print('ade ='+ade)
         if ad < pi:
             postos.append('Posto '+str(z))       
         else:
