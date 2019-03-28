@@ -113,21 +113,21 @@ def extenso(x):
         p=p+' mil,'
         p=p+dict3[tup[2]]
         p=p+dict4[tup[3]]        
-        p=p+dict2[tup[4]]+'.'
+        p=p+dict2[tup[4]]
         return p
     if x<1000:
         p=p+dict1[tup[0]]
         p=p+dict2a[tup[1]]
         p=p+dict3[tup[2]]
         p=p+dict4a[tup[3]]
-        p=p+dict2b[tup[4]]+'.'
+        p=p+dict2b[tup[4]]
         return p
     else:
         p=p+dict1[tup[0]]
         p=p+dict2a[tup[1]]
         p=p+dict3[tup[2]]
         p=p+dict4[tup[3]]
-        p=p+dict2b[tup[4]]+'.'
+        p=p+dict2b[tup[4]]
         return p
     
         
