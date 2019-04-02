@@ -6,10 +6,13 @@ de mesmo nome ou outros problemas do tipo.
 código, e ajuda horrores entender o que está acontecendo. Também coloquem no inicio uma string tripla (''') dizendo o que a função
 faz, o resultado dela, e qualquer outra coisa que você fez.
 Aqui estão todas as operações que precisamos fazer
-    Soma vetorial,
-    Multiplicação por escalar,
-    Combinação Linear de dois vetores apena,
-    Produto Interno (produto escalar),
-    Norma Vetorial (módulo),
-    Distância entre dois vetores,
-    Ângulo entre dois vetores.
+    Soma vetorial,X
+    Multiplicação por escalar, X
+    Combinação Linear de dois vetores apenas,X
+    Produto Interno (produto escalar), X
+    Norma Vetorial (módulo),X
+    Distância entre dois vetores,X
+    Ângulo entre dois vetores.X
+nvm as funções já forem feitas, só checar o operações.py
+´  < _  `
+ 
