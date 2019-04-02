@@ -1,0 +1,7 @@
+Coloquei aqui nessa pasta do diretorio as instruções pro desenvolvimento da calculadora
+1°: sempre que forem criar as operações entre vetores, façam isso por função: dessa forma não teremos problemas com variaveis
+de mesmo nome ou outros problemas do tipo.
+2°: eu criei uma função que cria e define os vetores. Deem uma lida rápida nela, pra ter ideia do que ela retorna e etc.
+3°: pelo amor de deus, coloquem comentario no codigo de vocês é só digitar >>>#<<< e colocar a mensagem do lado. Não atrapalha o 
+código, e ajuda horrores entender o que está acontecendo. Também coloquem no inicio uma string tripla (''') dizendo o que a função
+faz, o resultado dela, e qualquer outra coisa que você fez.
