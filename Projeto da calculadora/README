@@ -5,3 +5,11 @@ de mesmo nome ou outros problemas do tipo.
 3°: pelo amor de deus, coloquem comentario no codigo de vocês é só digitar >>>#<<< e colocar a mensagem do lado. Não atrapalha o 
 código, e ajuda horrores entender o que está acontecendo. Também coloquem no inicio uma string tripla (''') dizendo o que a função
 faz, o resultado dela, e qualquer outra coisa que você fez.
+Aqui estão todas as operações que precisamos fazer
+    Soma vetorial,
+    Multiplicação por escalar,
+    Combinação Linear de dois vetores apena,
+    Produto Interno (produto escalar),
+    Norma Vetorial (módulo),
+    Distância entre dois vetores,
+    Ângulo entre dois vetores.
