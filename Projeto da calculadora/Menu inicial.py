@@ -4,7 +4,16 @@ def menu(): #comando inicial das funções, onde cada variavel fica armazenada.
     z=1 #Numero que indica se o programa guarda o resultado da ultima conta ou não. (1 = ligado, 2 = desligado, 3 = guarda o resultado da ultima conta e soma ao resultado anterior.)
     menua()
 def menua(): #Menu inicial concluido
-    s=input(' Bem vindo a calculadora vetorial! \n Escolha uma opção para continuar, ou digite SAIR para sair!\n 1) Operações vetoriais \n 2) Configurações da calculadora \n')
+    s=input('''
+              _________        .__               .__              .___                                  __               .__       .__             
+          \_   ___ \_____  |  |   ____  __ __|  | _____     __| _/________________    ___  __ _____/  |_  ___________|__|____  |  |            
+  ______  /    \  \/\__  \ |  | _/ ___\|  |  \  | \__  \   / __ |/  _ \_  __ \__  \   \  \/ // __ \   __\/  _ \_  __ \  \__  \ |  |     ______ 
+ /_____/  \     \____/ __ \|  |_\  \___|  |  /  |__/ __ \_/ /_/ (  <_> )  | \// __ \_  \   /\  ___/|  | (  <_> )  | \/  |/ __ \|  |__  /_____/ 
+           \______  (____  /____/\___  >____/|____(____  /\____ |\____/|__|  (____  /   \_/  \___  >__|  \____/|__|  |__(____  /____/          
+                  \/     \/          \/                \/      \/                 \/             \/                          \/                
+    Bem vindo a calculadora vetorial! Escolha uma opção para continuar, ou digite SAIR para sair!
+    1) Operações vetoriais 
+    2) Configurações da calculadora ''')
     s=str.lower(s)
     if s not in ['2','1','sair']:
         print('\nOpção inválida, tente novamente.')
