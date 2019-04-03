@@ -1,6 +1,6 @@
 import math
 x=3 #tamanho comum do vetor. Utilizar isso em while loops,e alterar utilizando as opções.
-z=1 #Numero que indica se o programa guarda o resultado da ultima conta ou não. (1 = ligado, 2 = desligado, 3 = guarda o resultado da ultima conta e soma ao resultado anterior.)
+z=2 #Numero que indica se o programa guarda o resultado da ultima conta ou não. (1 = ligado, 2 = desligado, 3 = guarda o resultado da ultima conta e soma ao resultado anterior.)
 resultadof='' #Variavel global que armazena o resultado da ultima conta, e utiliza para realizar outras operações.
 
 def menu():
@@ -34,14 +34,6 @@ def menu():
         return
 
 
-
-
-
-
-
-
-
-
 ''' Função Criar vetor - Essa função utiliza uma parametro N para criar um vetor de N coordenadas.
 O resultado é uma lista.'''
 def cvec1(x):
@@ -58,6 +50,8 @@ def cvec2(x):
           p+=1
           l.append(int(input('Digite o valor da '+str(X)+'° coordenada do 2° vetor.')))
     return c
+
+'''Menu de configurações da calculadora. '''
 def opc():
     #Menu de configuração das calculadoras.
     opc=input('~~Configuração da calculadora~~ \n1) Alterar a dimensão padrão dos vetores \n2) Memorizar resultados anteriores \n3) Acumular resultado vetorial')
@@ -74,31 +68,45 @@ def opc():
             print('\nMemorização de resultados anteriores desligada.')
             global z
             z = 2
-            menua()
+            menu()
         if z == 2:
             print('\nMemorização de resultados anteriores ligada.')
             global z
             z = 1
-            menua()
+            menu()
         else:
             print('\nMemorização de resultados anteriores ligada, e acumulo vetorial desligado.')
             global z
             z = 1
-            menua()               
+            menu()               
     if opc == '3':
-            print('\nacumulo de resultado vetorial ligado, junto com memorização de resultados anteriores.')
+            print('\nAcumulo de resultado vetorial ligado, junto com memorização de resultados anteriores.')
             global z
             z=3
-            menua()    
+            menu()    
 
 '''Módulo das operações''' 
 
-def escmult(): #Multiplica um vetor por um numero escalar qualquer 
-    z=cvec1(N)
-    c=int(input(Defina aqui o numero pelo qual você deseja multiplicar o vetor: ))
-    for i in z:
-        z[i]*=c
-    return z
+def escmult():     #Multiplica um vetor por um numero escalar qualquer
+     if resultadof != '':
+          if type(resultadof)=type([]):
+               z=resultadof
+               c=int(input(Defina aqui o numero pelo qual você deseja multiplicar o vetor: ))
+               for i in z:
+                    z[i]*=c
+               return z
+          else:
+               z=cvec1(N)
+               c=resultadof
+               for i in z:
+                    z[i]*=c
+               return z   
+     else:          
+          z=cvec1(N)
+          c=int(input(Defina aqui o numero pelo qual você deseja multiplicar o vetor: ))
+          for i in z:
+               z[i]*=c
+          return z
 
 def prodint(z1,z2): #Calcula o produto interno entre 2 vetores.   
     z3=[]
@@ -109,71 +117,192 @@ def prodint(z1,z2): #Calcula o produto interno entre 2 vetores.
     return resul
 
 def sumvet(): #Calcula a soma vetorial de 2 vetores
-    z1=cvec1(N)
-    z2=cvec2(N)
-    z3=[]
-    for i in range(N):
-        zr[i]=z1[i]+z2[i]
-    return zr
+     zr=[]
+     if resultadof != '' and z==1:
+          if type(resultadof)==type([]):
+               z1=resultadof
+               z2=cvec2(N)
+               for i in range(N):
+                    zr[i]=z1[i]+z2[i]
+               return zr
+          else:
+               print('Não podemos realizar soma vetorial com um valor escalar.')
+               menu()          
+     else:
+          z1=cvec1(N)
+          z2=cvec2(N)    
+          for i in range(N):
+               zr[i]=z1[i]+z2[i]
+          return zr       
+def modvet(z1): #Calcula o módulo de 1 vetor.
+     p=0
+     if resultadof != '' and z==1:
+          if type(resultadof)==type([]):
+               z2=resultadof
+               for i in range(N):
+                    z2[i]=z2[i]**2
+                    p+=z2[i]
+                    return math.sqrt(p)
+          else:
+               return resultadof
+     else:          
+          for i in range(N):
+               z1[i]=z1[i]**2
+               p+=z1[i]
+               return math.sqrt(p)
+     
 
-def modvet(z1): #Calcula o módulo de 1 vetor.  
-    p=0
-    for i in range(N):
-        z1[i]=z1[i]**2
-        p+=z1[i]    
-   return math.sqrt(p)
+def angevet():#Calcula o angulo entre 2 vetores,e retorna em radianos.
+     if resultadof != '' and z==1:
+          if type(resultadof)==type([]):
+               z1=resultadof
+               z2=cvec2(N)
+               p=prodint(z1,z2)
+               q=modvet(z1)+modvet(z2)
+               teta= math.acos(p/q)
+               return teta
+          else:
+               z1=[0]*N
+               z1[0]=resultadof               
+               z2=cvec2(N)
+               p=prodint(z1,z2)
+               q=modvet(z1)+modvet(z2)
+               teta= math.acos(p/q)
+               return teta
+     else:
+          z1=cvec1(N)
+          z2=cvec2(N)
+          p=prodint(z1,z2)
+          q=modvet(z1)+modvet(z2)
+          teta= math.acos(p/q)
+          return teta
 
-def angevet(): #Calcula o angulo entre 2 vetores,e retorna em radianos.
-    z1=cvec1(N)
-    z2=cvec2(N)
-    p=prodint(z1,z2)
-    q=modvet(z1)+modvet(z2)
-    teta= math.acos(p/q)
-    return teta
-
-def disvet(): #calcula a distância entre 2 vetores.  
-    z1=cvec1(N)
-    z2=cvec2(N)
-    z3=[]
-    r=0
-    for i in range(N):
-        z3[i]=z1[i]-z2[i]
-        z3[i]=z3[i]**2
-        r+=z3[i]
-    return math.sqrt(r)
-
-def comblin(): #realiza a combinação linear de 2 vetores:
-     z1=cvec1(N)
-     z2=cvec2(N)
+def disvet():#calcula a distância entre 2 vetores.
      z3=[]
-     for i in range(N):
-         z3[i]=z1[i]*z2[i]]
-     return z3
+     r=0
+     if resultadof != '' and z==1:
+          if type(resultadof)==type([]):
+               z1=resultadof
+               z2=cvec2(N)               
+               for i in range(N):
+                    z3[i]=z1[i]-z2[i]
+                    z3[i]=z3[i]**2
+                    r+=z3[i]
+               return math.sqrt(r)
+          else:
+               z1=[0]*N
+               z1[0]=resultadof
+               z2=cvec2(N)
+               z3=[]
+               r=0
+               for i in range(N):
+                    z3[i]=z1[i]-z2[i]
+                    z3[i]=z3[i]**2
+                    r+=z3[i]         
+               return math.sqrt(r)
+     else:
+          z1=cvec1(N)
+          z2=cvec2(N)          
+          for i in range(N):
+               z3[i]=z1[i]-z2[i]
+               z3[i]=z3[i]**2
+               r+=z3[i]
+               return math.sqrt(r)
+          
+def comblin(): #realiza a combinação linear de 2 vetores:
+     z3=[]
+     if resultadof != '' and z==1:
+          if type(resultadof)==type([]):
+               z1=resultadof
+               z2=cvec2(N)
+               for i in range(N):
+                    z3[i]=z1[i]*z2[i]
+               return z3
+          else:               
+               z1=[0]*N
+               z1[0]=resultadof
+               z2=cvec2(N)
+               for i in range(N):
+                    z3[i]=z1[i]*z2[i]
+               return z3
+     else:
+          z1=cvec1(N)
+          z2=cvec2(N)
+          for i in range(N):
+               z3[i]=z1[i]*z2[i]
+          return z3    
     
 def opv():
     opv=input('''
 ~~Operações vetoriais~~
-1)Soma vetorial
+1) Soma vetorial
 2) Multiplicação de vetor por numero escalar
 3) Combinação linear de 2 vetores
 4) Norma Vetorial
 5) Produto interno
 6) Angulo entre os vetores''')
     
-    if opv == 1: #Definir todas essas funções. Cada um fica responsável por uma parte. Eu (Ruan felipe) cuido de ""costurar"" isso de forma decente. Pelo amor de deus cooperem.
-       q=sumvet()
-       print(q)
-       return q    
-       
-    if opv == 2:
-        multescvet()
-    if opv == 3:
-        comblinvet()
+    if opv == 1:
+     q=sumvet()
+     print('O resultado da operação é: '+str(q))
+     global resultadof
+     resultadof=q
+     menu() 
+     
+    if opv == 2:     
+     q=escmult()
+     print('O resultado da operação é: '+str(q))
+     global resultadof     
+     resultadof=q
+     menu()  
+    
+    if opv == 3:          
+     q=comblin()
+     print('O resultado da operação é: '+str(q))
+     global resultadof
+     resultadof=q
+     menu()
+          
     if opv == 4:
-        normvet()
-    if opv == 5:
-        intprod()
+     z1=cvec1(N)
+     q=normvet(z1)
+     print('O resultado da operação é: '+str(q))
+     global resultadof
+     resultadof=q
+     menu()
+     
+    if opv == 5:     
+     if resultadof!='' and z1==1:
+          if type(resultadof)==type([]):
+               z1=resultadof
+               z2=cvec2(N)
+               q=prodint(z1,z2)
+               global resultadof
+               resultadof=q
+               print('O resultado da operação é: '+str(q))
+               menu()
+          else:
+               z1=[0]*N
+               z1[0]=resultadof
+               z2=cvec2(N)
+               q=prodint(z1,z2)
+               global resultadof
+               resultadof=q
+               print('O resultado da operação é: '+str(q))
+               menu()
+     else:
+          z1=cvec1()
+          z2=cvec2()
+          q=prodint(z1,z2)
+          global resultadof
+          resultadof=q
+          print('O resultado da operação é'+str(q))
+          menu()                
     if opv == 6:
-        ang2vet()
+     q=angevet()
+     print('O resultado da operação é: '+str(q))
+     global resultadof
+     resultadof=q
+     menu()        
 
         
