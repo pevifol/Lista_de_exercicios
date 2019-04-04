@@ -1,5 +1,5 @@
 import math
-x=3 #tamanho comum do vetor. Utilizar isso em while loops,e alterar utilizando as opções.
+N=3 #tamanho comum do vetor. Utilizar isso em while loops,e alterar utilizando as opções.
 z=2 #Numero que indica se o programa guarda o resultado da ultima conta ou não. (1 = ligado, 2 = desligado, 3 = guarda o resultado da ultima conta e soma ao resultado anterior.)
 resultadof='' #Variavel global que armazena o resultado da ultima conta, e utiliza para realizar outras operações.
 
@@ -14,103 +14,105 @@ def menu():
                   \/     \/          \/                \/      \/                 \/             \/                          \/                
     Bem vindo a calculadora vetorial! Escolha uma opção para continuar, ou digite SAIR para sair!
     1) Operações vetoriais 
-    2) Configurações da calculadora '''))
+    2) Configurações da calculadora \n'''))
      
-    if type(s)== type(''):
-        s=str.lower(s)
+     if type(s)== type(''):
+          s=str.lower(s)
         
-    if s not in ['2','1','sair']:
-        print('\nOpção inválida, tente novamente.')
-        menu() # Recursão para reiniciar o programa.
+     if s not in ['2','1','sair']:
+          print('\nOpção inválida, tente novamente.')
+          menu() # Recursão para reiniciar o programa.
         
-    if s == '1':        
-        opv()
+     if s == '1':
+          opv()
         
-    if s == '2':
-        opc()
+     if s == '2':          
+          opc()
         
-    if s == 'sair':
-        print('Programa encerrando.')
-        return
+     if s == 'sair':
+          print('Programa encerrando.')
+          return
 
 
 ''' Função Criar vetor - Essa função utiliza uma parametro N para criar um vetor de N coordenadas.
 O resultado é uma lista.'''
-def cvec1(x):
-    l=[]
-    p=1
-    while p != x:
-          p+=1
-          l.append(int(input('Digite o valor da '+str(X)+'° coordenada do 1° vetor.')))
-    return l       
+def cvec1(x):     
+     l=[]
+     p=0
+     while p != x:
+          c=int(input('Digite o valor da '+str(p+1)+'° coordenada do 1° vetor.'))
+          if type(c) != type(2):
+               print('Valor inválido, digite novamente.')
+               pass
+          else:
+               p+=1
+               l.append(c)     
+     print(l)
+     return l       
 def cvec2(x):
-    c=[]
-    p=1
-    while p != x:
-          p+=1
-          l.append(int(input('Digite o valor da '+str(X)+'° coordenada do 2° vetor.')))
-    return c
+    q=[]
+    p=0
+    while p != x:         
+         c=int(input('Digite o valor da '+str(p)+'° coordenada do 1° vetor.'))
+         if type(c) != type(2):
+              print('Valor inválido, digite novamente.')
+              pass
+         else:
+              p+=1
+              q.append(c)
+    print(q)         
+    return q
 
 '''Menu de configurações da calculadora. '''
 def opc():
-    #Menu de configuração das calculadoras.
-    opc=input('~~Configuração da calculadora~~ \n1) Alterar a dimensão padrão dos vetores \n2) Memorizar resultados anteriores \n3) Acumular resultado vetorial')
-    if opc not in ['1','2','3']:
-        print('\nOpção invalida, tente novamente.')
-        opc()# Recursão para reinciar o programa.
-    if opc == '1':
-        p=input('\nDefina o tamanho padrão dos vetores: \n')
-        global x
-        x=p
-        menu()
-    if opc == '2':
-        if z == 1:
-            print('\nMemorização de resultados anteriores desligada.')
-            global z
-            z = 2
-            menu()
-        if z == 2:
-            print('\nMemorização de resultados anteriores ligada.')
-            global z
-            z = 1
-            menu()
-        else:
-            print('\nMemorização de resultados anteriores ligada, e acumulo vetorial desligado.')
-            global z
-            z = 1
-            menu()               
-    if opc == '3':
-            print('\nAcumulo de resultado vetorial ligado, junto com memorização de resultados anteriores.')
-            global z
-            z=3
-            menu()    
+     opc=input('~~Configuração da calculadora~~ \n1) Alterar a dimensão padrão dos vetores \n2) Memorizar resultados anteriores\n')
+     if opc not in ['1','2','3']:
+          print('\nOpção invalida, tente novamente.')
+          opc()
+     if opc == '1':
+          p=int(input('\nDefina o tamanho padrão dos vetores: \n'))
+          global N
+          N=p
+          menu()
+     if opc == '2':
+          global z
+          if z == 1:
+               print('\nMemorização de resultados anteriores desligada.')               
+               z = 2
+               menu()
+          if z == 2:
+               print('\nMemorização de resultados anteriores ligada.')               
+               z = 1
+               menu()
+          else:
+               print('what even está acontecendo')
 
 '''Módulo das operações''' 
 
-def escmult():     #Multiplica um vetor por um numero escalar qualquer
+def escmult():
+     global resultadof
      if resultadof != '':
-          if type(resultadof)=type([]):
+          if type(resultadof)==type([]):
                z=resultadof
-               c=int(input(Defina aqui o numero pelo qual você deseja multiplicar o vetor: ))
-               for i in z:
-                    z[i]*=c
-               return z
+               c=int(input('Defina aqui o numero pelo qual você deseja multiplicar o vetor: '))
+               za=[x*c for x in z]                   
+               return za
           else:
                z=cvec1(N)
                c=resultadof
-               for i in z:
-                    z[i]*=c
-               return z   
+               za=[x*c for x in z]                   
+               return za                 
      else:          
           z=cvec1(N)
-          c=int(input(Defina aqui o numero pelo qual você deseja multiplicar o vetor: ))
-          for i in z:
-               z[i]*=c
-          return z
+          c=int(input('Defina aqui o numero pelo qual você deseja multiplicar o vetor: '))
+          za=[x*c for x in z]          
+          return za
+          
 
 def prodint(z1,z2): #Calcula o produto interno entre 2 vetores.   
     z3=[]
-    resul=0    
+    resul=0
+    global resultadof
     for i in range(N):
         z3[i]=z1[i]*z2[i]
         resul+=z3[i]
@@ -118,6 +120,7 @@ def prodint(z1,z2): #Calcula o produto interno entre 2 vetores.
 
 def sumvet(): #Calcula a soma vetorial de 2 vetores
      zr=[]
+     global resultadof
      if resultadof != '' and z==1:
           if type(resultadof)==type([]):
                z1=resultadof
@@ -136,6 +139,7 @@ def sumvet(): #Calcula a soma vetorial de 2 vetores
           return zr       
 def modvet(z1): #Calcula o módulo de 1 vetor.
      p=0
+     global resultadof
      if resultadof != '' and z==1:
           if type(resultadof)==type([]):
                z2=resultadof
@@ -153,6 +157,7 @@ def modvet(z1): #Calcula o módulo de 1 vetor.
      
 
 def angevet():#Calcula o angulo entre 2 vetores,e retorna em radianos.
+     global resultadof
      if resultadof != '' and z==1:
           if type(resultadof)==type([]):
                z1=resultadof
@@ -178,6 +183,7 @@ def angevet():#Calcula o angulo entre 2 vetores,e retorna em radianos.
           return teta
 
 def disvet():#calcula a distância entre 2 vetores.
+     global resultadof
      z3=[]
      r=0
      if resultadof != '' and z==1:
@@ -210,6 +216,7 @@ def disvet():#calcula a distância entre 2 vetores.
                return math.sqrt(r)
           
 def comblin(): #realiza a combinação linear de 2 vetores:
+     global resultadof
      z3=[]
      if resultadof != '' and z==1:
           if type(resultadof)==type([]):
@@ -233,76 +240,69 @@ def comblin(): #realiza a combinação linear de 2 vetores:
           return z3    
     
 def opv():
-    opv=input('''
+     global resultadof
+     opv=int(input('''
 ~~Operações vetoriais~~
 1) Soma vetorial
 2) Multiplicação de vetor por numero escalar
 3) Combinação linear de 2 vetores
-4) Norma Vetorial
+4) Norma  Vetorial
 5) Produto interno
-6) Angulo entre os vetores''')
+6) Angulo entre os vetores \n'''))
     
-    if opv == 1:
-     q=sumvet()
-     print('O resultado da operação é: '+str(q))
-     global resultadof
-     resultadof=q
-     menu() 
+     if opv == 1:
+          a=sumvet()
+          print('O resultado da operação é: '+str(a))          
+          resultadof=a
+          menu() 
      
-    if opv == 2:     
-     q=escmult()
-     print('O resultado da operação é: '+str(q))
-     global resultadof     
-     resultadof=q
-     menu()  
+     if opv == 2:
+          b=escmult()
+          print('O resultado da operação é: '+str(b))               
+          resultadof=b
+          menu()  
     
-    if opv == 3:          
-     q=comblin()
-     print('O resultado da operação é: '+str(q))
-     global resultadof
-     resultadof=q
-     menu()
+     if opv == 3:
+          c=comblin()
+          print('O resultado da operação é: '+str(c))     
+          resultadof=c
+          menu()
           
-    if opv == 4:
-     z1=cvec1(N)
-     q=normvet(z1)
-     print('O resultado da operação é: '+str(q))
-     global resultadof
-     resultadof=q
-     menu()
+     if opv == 4:
+          z1=cvec1(N)
+          d=normvet(z1)
+          print('O resultado da operação é: '+str(d))     
+          resultadof=d
+          menu()
      
-    if opv == 5:     
-     if resultadof!='' and z1==1:
-          if type(resultadof)==type([]):
-               z1=resultadof
-               z2=cvec2(N)
-               q=prodint(z1,z2)
-               global resultadof
-               resultadof=q
-               print('O resultado da operação é: '+str(q))
-               menu()
+     if opv == 5:
+          if resultadof!='' and z1==1:
+               if type(resultadof)==type([]):
+                    z1=resultadof
+                    z2=cvec2(N)
+                    e=prodint(z1,z2)
+                    resultadof=e
+                    print('O resultado da operação é: '+str(e))
+                    menu()
+               else:
+                    z1=[0]*N
+                    z1[0]=resultadof
+                    z2=cvec2(N)
+                    f=prodint(z1,z2)               
+                    resultadof=f
+                    print('O resultado da operação é: '+str(f))
+                    menu()
           else:
-               z1=[0]*N
-               z1[0]=resultadof
-               z2=cvec2(N)
-               q=prodint(z1,z2)
-               global resultadof
-               resultadof=q
-               print('O resultado da operação é: '+str(q))
-               menu()
-     else:
-          z1=cvec1()
-          z2=cvec2()
-          q=prodint(z1,z2)
-          global resultadof
-          resultadof=q
-          print('O resultado da operação é'+str(q))
-          menu()                
-    if opv == 6:
-     q=angevet()
-     print('O resultado da operação é: '+str(q))
-     global resultadof
-     resultadof=q
-     menu()        
+               z1=cvec1()
+               z2=cvec2()
+               g=prodint(z1,z2)          
+               resultadof=g
+               print('O resultado da operação é'+str(g))
+               menu()                
+     if opv == 6:
+          h=angevet()
+          print('O resultado da operação é: '+str(h))
+          resultadof=h
+          menu()        
 
         
