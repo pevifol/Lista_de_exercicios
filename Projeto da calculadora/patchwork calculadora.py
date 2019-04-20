@@ -1,3 +1,10 @@
+'''
+Este é o projeto da calculadora vetorial, idealizada e criada por mim, Ruan felipe da silva e sousa, e meus companheiros, Matheus Moreira do Nascimento, Felipe Rodrigues Ribeiro e Igor torres.
+
+A base da calculadora são as funções cvec1() e cvec(), que criam vetores, aqui definidos por uma lista, que são usados dentro das funções.
+O resto da calculadora é divida em 3 módulos, as funções menu(), onde a calculadora se inicia, a função opc(), onde encontramos as opções da calculadora, e a função opv(), onde encontramos as
+operações, de fato.
+'''
 import math
 N=3 #tamanho comum do vetor. Utilizar isso em while loops,e alterar utilizando as opções.
 z=2 #Numero que indica se o programa guarda o resultado da ultima conta ou não. (1 = ligado, 2 = desligado, 3 = guarda o resultado da ultima conta e soma ao resultado anterior.)
@@ -110,7 +117,7 @@ def escmult():
           
 
 def prodint(z1,z2): #Calcula o produto interno entre 2 vetores.   
-    z3=[]
+    z3=[0]*N
     resul=0
     global resultadof
     for i in range(N):
@@ -119,7 +126,7 @@ def prodint(z1,z2): #Calcula o produto interno entre 2 vetores.
     return resul
 
 def sumvet(): #Calcula a soma vetorial de 2 vetores
-     zr=[]
+     zr=[0]*N
      global resultadof
      if resultadof != '' and z==1:
           if type(resultadof)==type([]):
@@ -146,14 +153,14 @@ def modvet(z1): #Calcula o módulo de 1 vetor.
                for i in range(N):
                     z2[i]=z2[i]**2
                     p+=z2[i]
-                    return math.sqrt(p)
+               return math.sqrt(p)     
           else:
                return resultadof
      else:          
           for i in range(N):
                z1[i]=z1[i]**2
                p+=z1[i]
-               return math.sqrt(p)
+          return math.sqrt(p)     
      
 
 def angevet():#Calcula o angulo entre 2 vetores,e retorna em radianos.
@@ -163,28 +170,30 @@ def angevet():#Calcula o angulo entre 2 vetores,e retorna em radianos.
                z1=resultadof
                z2=cvec2(N)
                p=prodint(z1,z2)
-               q=modvet(z1)+modvet(z2)
+               q=modvet(z1)*modvet(z2)
                teta= math.acos(p/q)
                return teta
           else:
                z1=[0]*N
                z1[0]=resultadof               
                z2=cvec2(N)
-               p=prodint(z1,z2)
-               q=modvet(z1)+modvet(z2)
+               p=prodint(z1,z2)               
+               q=modvet(z1)*modvet(z2)
                teta= math.acos(p/q)
                return teta
      else:
           z1=cvec1(N)
           z2=cvec2(N)
           p=prodint(z1,z2)
-          q=modvet(z1)+modvet(z2)
+          print(p)
+          q=modvet(z1)*modvet(z2)
+          print(q)
           teta= math.acos(p/q)
           return teta
 
 def disvet():#calcula a distância entre 2 vetores.
      global resultadof
-     z3=[]
+     z3=[]*N
      r=0
      if resultadof != '' and z==1:
           if type(resultadof)==type([]):
@@ -217,7 +226,7 @@ def disvet():#calcula a distância entre 2 vetores.
           
 def comblin(): #realiza a combinação linear de 2 vetores:
      global resultadof
-     z3=[]
+     z3=[0]*N
      if resultadof != '' and z==1:
           if type(resultadof)==type([]):
                z1=resultadof
@@ -270,7 +279,7 @@ def opv():
           
      if opv == 4:
           z1=cvec1(N)
-          d=normvet(z1)
+          d=modvet(z1)
           print('O resultado da operação é: '+str(d))     
           resultadof=d
           menu()
