@@ -261,37 +261,37 @@ def opv():
     
      if opv == 1:
           a=sumvet()
-          print('O resultado da operação é: '+str(a))          
+          print('O resultado da operação é o vetor: '+str(a))          
           resultadof=a
           menu() 
      
      if opv == 2:
           b=escmult()
-          print('O resultado da operação é: '+str(b))               
+          print('O resultado da operação é o vetor: '+str(b))               
           resultadof=b
           menu()  
     
      if opv == 3:
           c=comblin()
-          print('O resultado da operação é: '+str(c))     
+          print('O resultado da operação é o vetor: '+str(c)+)     
           resultadof=c
           menu()
           
      if opv == 4:
           z1=cvec1(N)
           d=modvet(z1)
-          print('O resultado da operação é: '+str(d))     
+          print('O resultado da operação é: '+str(d)+' unidades de comprimento.')     
           resultadof=d
           menu()
      
      if opv == 5:
-          if resultadof!='' and z1==1:
+          if resultadof!='' and z==1:
                if type(resultadof)==type([]):
                     z1=resultadof
                     z2=cvec2(N)
                     e=prodint(z1,z2)
                     resultadof=e
-                    print('O resultado da operação é: '+str(e))
+                    print('O resultado da operação é o valor: '+str(e))
                     menu()
                else:
                     z1=[0]*N
@@ -299,18 +299,18 @@ def opv():
                     z2=cvec2(N)
                     f=prodint(z1,z2)               
                     resultadof=f
-                    print('O resultado da operação é: '+str(f))
+                    print('O resultado da operação é o valor: '+str(f))
                     menu()
           else:
                z1=cvec1()
                z2=cvec2()
                g=prodint(z1,z2)          
                resultadof=g
-               print('O resultado da operação é'+str(g))
+               print('O resultado da operação é o valor:'+str(g))
                menu()                
      if opv == 6:
           h=angevet()
-          print('O resultado da operação é: '+str(h))
+          print('O resultado da operação é: '+str(h)+' radianos.')
           resultadof=h
           menu()        
 
