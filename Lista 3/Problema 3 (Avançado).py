@@ -22,12 +22,16 @@ def contpasta(a='.'):
             p.replace(':','')#a palavra seguido por pontuação da palavra sozinha.
         palavras+=z #Adiciona as palavras do texto criando uma megalista gigantesca contendo todas as palavras de todos os txt's,incluindo repetidas.
         arquivo.close()#Hora de fechar o que abrimos.
-    for i in palavras:
+    for i in palavras:        
         z=i.split('\n')#separa palavras "juntadas" por quebra de linha.
         palavras.remove(i)#Remove a palavra juntada que quebramos no exercicio anterior da lista original.
-        palavras+=z#re-adiciona as palavras separadas para a lista original.    
+        palavras+=z#re-adiciona as palavras separadas para a lista original.
+    for i in palavras:
+        z=i.lower()#transforma todas as palavras pra letra minuscula.
+        palavras.remove(i)#remove palavra "grande"
+        palavras+=z#re-adiciona as palavras removidas anteriormente.
     palavrasunicas=list(dict.fromkeys(palavras))#Remove palavras duplicadas da megalista, criando a lista de palavras unicas.    
-    for x in paavrasunicas:#Hora de calcular a frequência das palavras.
+    for x in palavrasunicas:#Hora de calcular a frequência das palavras.
         y=str(palavras.count(x))#Verifica a frequência de cada palavra no arquivo.
         palavrasfrequenciadas.append(x+' - '+y)#adiciona a palavra e sua frequencia separado por - a lista palavras.
     palavrasfrequenciadas.sort(key= lambda a: int(a.split(' - ')[1]) ,reverse=True)#Organizamos a lista baseado no valor de frequência da lista, do maior para o menor.
