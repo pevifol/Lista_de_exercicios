@@ -8,12 +8,10 @@ def salvarmatriz(a):
     try:
         for i in a:#a é uma lista, e portanto, vamos salvar cada "linha" dentro dela separadamente.
             x.write(i)#Escreve os elementos de a no arquivo.
-            x.close()#Fecha o objeto que abrimos, encerrando a função
-            return
+        x.close()#Fecha o objeto que abrimos, encerrando a função
+        return
     except:
         print('A matriz para ser salva está com algum problema. Por favor, tente novamente.\n')
-   
-
 def lermatriz():
     arquivos = os.listdir("."+'/matrizes')#lê todos os arquivos contidos onde o programa está.
     rmarquivos=[]
