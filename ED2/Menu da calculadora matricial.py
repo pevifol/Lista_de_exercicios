@@ -1,3 +1,11 @@
+'''
+Calculadora Matricial ED2
+Alunos: Felipe Rodrigues, Igor Torres, Matheus Moreira, Ruan Felipe
+DRE: 119052031, 119034669, 119042060, 119041454. (Respectivamente)
+Curso: Matemática Aplicada
+Disciplina: Topicos da Matemática Aplicada A
+'''
+
 import os
 '''Barriga é legal'''
 def menu():
@@ -8,8 +16,8 @@ def menu():
           |_____  |     | |_____ |_____  |_____| |_____ |     | |_____/ |_____| |    \_ |     |      |  |  | |     |    |    |    \_ __|__ |_____  __|__ |     | |_____         
      Informe o que você deseja fazer: (Recomenda-se ao iniciar pela primeira vez ir na primeira opção para definir uma matriz, já que a lista começa vazia)
      1 - Manipular lista de matrizes
-     2 - realizar operações com matrizes
-     3 - alterar configurações do programa
+     2 - Realizar operações com matrizes
+     3 - Sair do programa
      '''
     z = input(q)
     if z == '1':
@@ -17,7 +25,7 @@ def menu():
     if z == '2':
         return operações()
     if z == '3':
-        return altconfig()
+        return
 
 def manlist():
     '''Lista usada para manipular as matrizes'''
@@ -80,7 +88,7 @@ def manlist():
     if c==str(z+5):
         return ler_backup()
     if c==str(z+6):
-        return identidade()
+        return criar_identidade()
     return alterar_matriz(arquivos[int(c)-1])     
 
 def backup_matriz(a):    
