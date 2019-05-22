@@ -1,5 +1,5 @@
 import os
-
+'''Barriga é legal'''
 def menu():
     '''Menu inicial da calculadora matricial'''
     q='''
