@@ -7,7 +7,6 @@ Disciplina: Topicos da Matemática Aplicada A
 '''
 
 import os
-'''Barriga é legal'''
 def menu():
     '''Menu inicial da calculadora matricial'''
     q='''
@@ -66,6 +65,7 @@ def manlist():
     print(str(z+4)+' - Zerar a lista de matriz')
     print(str(z+5)+' - Ler backup (Acrescentar ou substituir)')
     print(str(z+6)+' - Inserir matriz identidade NxN')
+    print(str(z+7)+' - Retornar ao menu inicial')
     c=input('\nO que você deseja fazer?: ')    
     if c==str(z+1):
         return criar_matriz()
@@ -89,7 +89,18 @@ def manlist():
         return ler_backup()
     if c==str(z+6):
         return criar_identidade()
-    return alterar_matriz(arquivos[int(c)-1])     
+    if c==str(z+7):
+        return menu()
+    try:
+        x=open('.'+str('/matrizes/'+arquivos[int(c)-1]),"r")
+        z=x.read().split('\n')#lê a matriz de dentro da pasta.
+        x.close()#fecha o que abrimos.
+        print(z)
+        print('\n Retornando ao menu de manipulação')
+        return manlist() #a matriz que desejamos está ai.
+    except: #caso algo dê errado, a função vai executar esse bloco de código.
+        print('Por favor, selecione uma opção válida.\n')
+        return manlist()
 
 def backup_matriz(a):    
     '''Recebe uma lista com os nomes de matrizes, e então faz backup dessas matrizes em uma pasta'''
@@ -482,7 +493,6 @@ def matriz_criar():
     
 #-------ESSA AQUI É SÓ PRA PRINTAR O RESULTADO QUE SAI DE UMA OPERAÇÃO E PERGUNTAR SE O USUARIO QUER SALVAR O RESULTADO-------
 def resultado(x):
-    
     print("O resultado é\n")
     print()
     print("+-"," "*(7*len(x[0])-2),"-+")
@@ -495,11 +505,11 @@ def resultado(x):
     print("+-"," "*(7*len(x[0])-2),"-+")
 
     sal = int(input("Digite 1 para salvar o resultado, \nDigite 2 para retornar ao menu de operações ou \nDigite 3 para retornar ao menu inicial. "))
-        while sal!=1 and sal!=2 and sal!=3:# aqui é pra garantir que digite uma opção valida
-            print("Essa opção não é valida, tenta de novo ai")
-            sal = int(input("Digite 1 para salvar o resultado, \nDigite 2 para retornar ao menu de operações ou \nDigite 3 para retornar ao menu inicial. "))
+    while sal!=1 and sal!=2 and sal!=3:# aqui é pra garantir que digite uma opção valida
+        print("Essa opção não é valida, tenta de novo ai")
+        sal = int(input("Digite 1 para salvar o resultado, \nDigite 2 para retornar ao menu de operações ou \nDigite 3 para retornar ao menu inicial. "))
     if sal == 1:
-        salvarmatriz(x):
+        salvarmatriz(x)
         return menu()
     
     elif sal == 2:
@@ -511,18 +521,17 @@ def resultado(x):
 def soma_subt(x,y,z):
     m = int(len(x))
     n = int(len(x[0]))
-    mat = []
-        for i in range (m):                          
-            linha=[]
-            for j in range (n):  
-                if z == 1:
-                    som = float(x[i][j]) + float(y[i][j])
-                    linha.append(som)
-                if z == 2:
-                    som = float(x[i][j]) - float(y[i][j])
-                    linha.append(som)
-            mat.append(linha)
-        
+    mat = []    
+    for i in range (m):
+        linha=[]
+        for j in range (n):
+            if z == 1:
+                som = float(x[i][j]) + float(y[i][j])
+                linha.append(som)
+            if z == 2:
+                som = float(x[i][j]) - float(y[i][j])
+                linha.append(som)
+        mat.append(linha)                        
     return resultado(mat)             
 #----------------------------------------------------------------------------------------------------------------
 def multi_mat(x,y):
@@ -631,8 +640,7 @@ def transpor(x):
             troc = x[j][i]
             linha.append(troc)
         mat.append(troc)
-        
-   return resultado(mat)
+    return resultado(mat)
 #---------------------------------------------------------------------------------------------------------------
 def multi_esc(x):
     k=int(input('Digite o valor pelo qual deseja que a matriz seja multiplicada. '))
@@ -647,7 +655,7 @@ def multi_esc(x):
             linha.append(multi)
         mat.append(linha)
         
-   return resultado(mat)
+    return resultado(mat)
 #----------------------------------------------------------------------------------------------------------------
 def multi_lin_col_esc(x,y):
     mat = []
@@ -701,4 +709,5 @@ def inversão(x):
     linha2.append(a/det)
     mat.append(linha2)
 
-   return resultado(mat)
+    return resultado(mat)
+
