@@ -8,7 +8,7 @@ def lmatriz(a="."):
         x.close()   
     except FileNotFoundError:
         print('O arquivo não foi encontrado. Por favor, digite o nome/caminho correto para o arquivo.')
-        return lmatriz(a)
+        return lmatriz(input())
     if len(z[0])!=2:
         raise IndexError('A matriz está no formato errado. A primeira linha deve conter dois numeros inteiros, respectivamente o numero de linhas e de colunas da matriz.')
     for i in range(1,len(z)):
