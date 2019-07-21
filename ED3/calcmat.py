@@ -124,19 +124,7 @@ def backup_matriz(a):
 
 def limpar_lista(a):
     ''' Recebe uma lista de matrizes, e remove elas da pasta de arquivos.'''
-    arquivos = os.listdir("."+'/matrizes')
-    rmarquivos=[]
-    for i in arquivos:
-        if i[-4:] != '.txt' : 
-            rmarquivos.append(i)
-        else:
-            pass
-    for i in rmarquivos:
-        arquivos.pop(arquivos.index(i))
-        
-    if arquivos == []:
-        print('A lista já está vazia.')
-        return menu()    
+    arquivos = os.listdir("."+'/matrizes')        
     p=input('Você tem certeza que deseja fazer isso? y/n: ')    
     if p=='y':
         for i in a:
@@ -286,7 +274,48 @@ def  trac(a):
 def multi_esc(x):
     k=int(input('Digite o valor pelo qual deseja que a matriz seja multiplicada. '))
     return x*k
+def vizu_matriz():
+    print('Matrizes disponíveis para a visualização:')
+    for i in arquivos:
+        c=str(arquivos.index(i)+1)+' - '+i
+        print(c)
+        z=arquivos.index(i)+1
+    try:
+        x=matriz(arquivos[z-1])
+        z=x.read().split('\n')#lê a matriz de dentro da pasta.
+        x.close()#fecha o que abrimos.
+        print(z)
+        print('\n Retornando ao menu de manipulação')
+        return
+    except: #caso algo dê errado, a função vai executar esse bloco de código.
+        print('Por favor, selecione uma opção válida.\n')
+        return vizu_matriz()
 
+def altrem():
+    print('Matrizes disponíveis para alteração/remoção:')    
+        for i in arquivos:
+            c=str(arquivos.index(i)+1)+' - '+i
+            print(c)
+        c=input('\nQual matriz você deseja alterar/remover?: ')
+        q=input("Escreva qualquer coisa caso queira remover a matriz, ou deixe em branco caso queira alterar ela.")
+        if q != '':
+            try:
+                x=[arquivos[c-1]]
+                return limpar_lista(x)
+            except:
+                print('\n Por favor, selecione um valor dentro da lista. Abortando.')
+                return
+        else:
+            a=input("Você deseja alterar o elemento de que linha?")
+            b=input("Você deseja alterar o elemento de que coluna?")
+            d=int(input("Digite o novo valor para o elemento"))
+            x=matriz(arquivos[c-1]).v()
+            x[a][b]=d
+            q=matriz(arquivos[c-1]).fudeu(x)
+            return
+            
+            
+    
 
     
         

@@ -50,7 +50,7 @@ class matriz():
                             lista=''
                             for j in range(self.Ncolunas):
                                 if i<=j:
-                                    lista+=a[i][j]
+                                    lista+=a[i][j]+','
                             matriz.write(lista+'\n')                        
                 if self.diagons() == True:
                     self.diagonalsup=True
@@ -65,6 +65,27 @@ class matriz():
                                     lista+=a[i][j]
                             matriz.write(lista+'\n')
           #Salvando memória.
+        if nome == 'ident':
+            self.diagonal=True
+            self.nome=input('Digite o nome do arquivo da matriz: ')
+            try:                
+                self.Ncolunas=int(input('Digite o numero de linhas/colunas da matriz: '))
+            except:
+                print("Por favor digite um valor válido para o numero de linhas/colunas. Utilizando valor padrão de 1x1")
+                self.Nlinhas=1
+                self.Ncolunas=1
+            try:
+                with open('./matrizes/'+self.nome,'w') as matriz:
+                    matriz.write('id'+','+str(self.Ncolunas))
+                    for i in range(self.Ncolunas):
+                        lista+='1'
+                        try:
+                            matriz.write(lista+'\n')
+                        except:
+                            print("Erro desconhecido ocorrido durante tentativa de gravar valor no arquivo, descontinuando operação.")
+                            return
+            
+            
         else:
             self.nome=nome
             with open('./matrizes/'+self.nome,'r') as matriz:
@@ -82,8 +103,33 @@ class matriz():
             z=matriz.read().split('\n')
             x=map(lambda x: x.split(','),z)
         if x[0][0] == "d" or x[0][0] == "df" or x[0][0] == "ds" :
-            return "Função errada, parceiro. Utilize a função vd."
+            return self.vd(x)
+        if x[0][0] == "id":
+            x=[[0]*self.Ncolunas]*self.Ncolunas]
+            for i in self.Ncolunas:
+                x[i][i] = 1
         return x
+    def vd(self,a):        
+        if a[0][0] == "d":
+            x=[[0]*self.Ncolunas]*self.Ncolunas]
+            for i in range(1,self.Ncolunas+1):
+                x[i][i] = a[i][i]
+            return x
+        else:
+            if a == "df":
+                x=[[0]*self.Ncolunas]*self.Ncolunas]
+                for i in range(self.Nlinhas):
+                    for j in range(self.Ncolunas):
+                        if i>=j:
+                            x[i][j]=a[i][j]
+                return x
+            if a[0][0] == 'ds':
+                x=[[0]*self.Ncolunas]*self.Ncolunas]
+                for i in range(self.Nlinhas):
+                    for j in range(self.Ncolunas):
+                        if i<=j:
+                            x[i][j]=a[i][j]
+                return x
     def diagons(self):
         with open('./matrizes/'+self.nome,'r') as matriz:
             x=matriz.read().split('\n')
@@ -154,5 +200,28 @@ class matriz():
                     q[i][j] += a[i][k]*b[k][j]
         return q
  #magic methods ftw
+    def __str__(self):
+        a=self.v()
+        for i in self.Nlinhas:
+            q = "|"
+            for j in range(0,min(0,self.Ncolunas-1)):
+                q += a[i][j] + ","
+            q += a[i][self.Ncolunas]  + "|"
+            print(q)
+    def fudeu(self,a):
+        os.remove("./matrizes/"+self.nome)
+        with open('./matrizes/'+self.nome,'w') as matriz:
+            for i in range(self.Nlinhas):
+                linha=''
+                for p in range(self.Ncolunas):
+                    lista+=str(a[i][p])+','
+                try:
+                    matriz.write(lista+'\n')
+                except:
+                    print("Algum erro aconteceu na hora de alterar a matriz. Abortando tudo `<_´")
+                    return
+#honestamente, esse código ta uma porcaria e me da muito vergonha. Mas a esse ponto do ano eu não tenho muita escolha alem de entregar assim :/
+            
+    __repr__ = __str__
                             
             

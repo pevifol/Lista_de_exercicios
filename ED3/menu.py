@@ -9,21 +9,22 @@ m_op={
     '3':a*b,#
     }
 m_1m={
-    '1':multi_esc(a)# [O overload de operador se encontra dentro dessa função)
+    '1':multi_esc(a)# [O overload de operador se encontra dentro dessa função]
     '2':trac(a)#
     '3':detm(a) # 
     '4':transpor(a.v) #
     }
 
 m_mm={
-    '1'
-    '2'
-    '3'
-    '4'
-    '5'
-    '6'
-    '7'
-    '8'
+    '1':visu_matriz()
+    '2':matriz(bool(input("Digite o nome do arquivo da matriz caso tenha adicionado ela como arquivo, ou deixa em branco caso deseje digitar por teclado.") == ''))
+    '3':matriz('ident')
+    '4':altrem()
+    '5':visu_matriz()
+    '6':backup_matriz(arquivos)
+    '7':ler_backup()
+    '8':limparlista(arquivos)
+    }
     
 def menu():
     a=input('''Olá! bem vindo ao menu da calculadora matricial. Por favor, escolha uma das seguintes opções:
@@ -34,7 +35,17 @@ def menu():
 
 ''')
     if a=='4':
-        return
+        a=input('''Olá, bem vindo ao menu de manipulação da calculadora matricial. Por favor, escolha uma das seguintes opções:
+1) Visualizar alguma matriz
+2) Inserir alguma matriz (Teclado ou por arquivo. Recomenda-se criar uma matriz por teclado primeiro, verificar a formatação e em seguida tentar criar por arquivo.)
+3) Inserir matriz identidade.
+4) Alterar/Remover matriz da lista
+5) Procurar matriz por tipo/nome/numero de linhas/numero de colunas
+6) Fazer backup das matrizes.
+7) Ler backup das matrizes.
+8) Remover todas as matrizes.''')
+        a=m_mm[a]
+        return a
     if a=='2':
         try:
             print('Matrizes disponíveis para a escolha:')
