@@ -16,7 +16,7 @@ dado=dado[dado.DS_GRAU_ESCOLARIDADE != "NÃO INFORMADO"]
 a=dado.groupby(['DS_FAIXA_ETARIA','DS_GENERO']).sum().unstack().plot(kind='bar',y='QT_ELEITORES_PERFIL',title='Gráfico Faixa etária x Eleitores')
 a.set_xlabel("Faixa etária")
 a.set_ylabel("N° de eleitores")
-b=dado.groupby(['SG_UF','DS_GENERO']).sum().unstack().plot(kind='bar',y='QT_ELEITORES_PERFIL',title='Gráfico UF x Eleitores')
+b=dado.groupby(['SG_UF','DS_GENERO']).sum().unstack().plot(kind='barh',y='QT_ELEITORES_PERFIL',title='Gráfico UF x Eleitores')
 b.set_xlabel("Unidade Federativa")
 b.set_ylabel("N° de eleitores")
 c=dado.groupby(['DS_GRAU_ESCOLARIDADE','DS_GENERO']).sum().unstack().plot(kind='bar',y='QT_ELEITORES_PERFIL',title='Gráfico Escolaridade x Eleitores')
